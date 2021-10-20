@@ -11,8 +11,9 @@ body {
   
   nav {
     display: flex;
-    padding: 2rem 0;
+    padding: 2.5rem 0;
     background: #111;
+    
   }
   
   nav section {
@@ -104,4 +105,7 @@ body {
   .right {
     float: right;
   }
+  .logo{
+    height: 60%;
+  } 
   
