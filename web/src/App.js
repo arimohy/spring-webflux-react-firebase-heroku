@@ -18,6 +18,7 @@ import QuestionFormPage from './pages/QuestionFormPage'
 import AnswerFormPage from './pages/AnswerFormPage'
 import OwnerQuestionsPage from './pages/OwnerQuestionsPage'
 import { useAuthState } from "react-firebase-hooks/auth";
+import Footer from "./components/Footer"
 
 firebase.initializeApp({
   apiKey: "AIzaSyAHx-Jg4cNIHX-x2MDww_puia221XdCNHA",
@@ -37,6 +38,7 @@ const App = ({ dispatch }) => {
     dispatch(login(user.email, user.uid))
   }
   return (
+    <>
     <Router>
       {user ?
         <>
@@ -67,6 +69,8 @@ const App = ({ dispatch }) => {
         </>
       }
     </Router>
+    <Footer></Footer>
+    </>
   )
 }
 

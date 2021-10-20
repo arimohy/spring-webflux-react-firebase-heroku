@@ -3,6 +3,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
   }
   
   p {
@@ -108,4 +109,17 @@ body {
   .logo{
     height: 60%;
   } 
-  
+  .footer{
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color:#111;
+    color: #ea3546;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .contentHome{
+    padding: 4rem;
+  }
