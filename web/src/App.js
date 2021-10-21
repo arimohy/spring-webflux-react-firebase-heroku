@@ -31,11 +31,11 @@ firebase.initializeApp({
 });
 
 const auth = firebase.auth();
-
 const App = ({ dispatch }) => {
   const [user] = useAuthState(auth);
+
   if(user){
-    dispatch(login(user.email, user.uid))
+    dispatch(login(user.email, user.uid,user.photoURL,user.displayName))
   }
   return (
     <>

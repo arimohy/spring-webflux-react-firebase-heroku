@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { fetchOwnerQuestions, deleteQuestion } from '../actions/questionActions'
 import { Question } from '../components/Question'
 
-const OwnerQuestionsPage = ({ dispatch, loading, questions, hasErrors, redirect, userId }) => {
+const OwnerQuestionsPage = ({ dispatch, loading, questions, hasErrors, redirect, userId ,url,nombre}) => {
     useEffect(() => {
         dispatch(fetchOwnerQuestions(userId))
     }, [dispatch, userId]);
@@ -43,7 +43,9 @@ const mapStateToProps = state => ({
     questions: state.question.questions,
     hasErrors: state.question.hasErrors,
     redirect: state.question.redirect,
-    userId: state.auth.uid
+    userId: state.auth.uid,
+    url:state.auth.photoURL,
+    nombre: state.auth.displayName
 })
 
 export default connect(mapStateToProps)(OwnerQuestionsPage)

@@ -13,7 +13,9 @@ const SingleQuestionPage = ({
   question,
   hasErrors,
   loading,
-  userId
+  userId,
+  url,
+  nombre
 }) => {
   const { id } = match.params
   useEffect(() => {
@@ -50,7 +52,9 @@ const mapStateToProps = state => ({
   question: state.question.question,
   loading: state.question.loading,
   hasErrors: state.question.hasErrors,
-  userId: state.auth.uid
+  userId: state.auth.uid,
+  url:state.auth.photoURL,
+  nombre: state.auth.displayName
 })
 
 export default connect(mapStateToProps)(SingleQuestionPage)

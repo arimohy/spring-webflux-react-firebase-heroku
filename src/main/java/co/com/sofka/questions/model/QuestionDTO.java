@@ -19,6 +19,8 @@ public class QuestionDTO {
     private String category;
     private List<AnswerDTO> answers;
 
+    private String url;
+    private String nombre;
 
     public QuestionDTO() {
 
@@ -37,6 +39,16 @@ public class QuestionDTO {
         this.question = question;
         this.type = type;
         this.category = category;
+    }
+
+    public QuestionDTO(String id, String userId, String question, String type, String category,String url, String nombre) {
+        this.id = id;
+        this.userId = userId;
+        this.question = question;
+        this.type = type;
+        this.category = category;
+        this.url = url;
+        this.nombre = nombre;
     }
 
     public List<AnswerDTO> getAnswers() {
@@ -88,6 +100,22 @@ public class QuestionDTO {
         this.category = category;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     @Override
     public String toString() {
         return "QuestionDTO{" +
@@ -96,6 +124,9 @@ public class QuestionDTO {
                 ", question='" + question + '\'' +
                 ", type='" + type + '\'' +
                 ", category='" + category + '\'' +
+                ", answers=" + answers +
+                ", url='" + url + '\'' +
+                ", nombre='" + nombre + '\'' +
                 '}';
     }
 

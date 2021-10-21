@@ -18,6 +18,8 @@ public class MapperUtils {
             answer.setQuestionId(updateAnswer.getQuestionId());
             answer.setUserId(updateAnswer.getUserId());
             answer.setAnswer(updateAnswer.getAnswer());
+            answer.setUrl(updateAnswer.getUrl());
+            answer.setNombre(updateAnswer.getNombre());
             return answer;
         };
     }
@@ -31,6 +33,8 @@ public class MapperUtils {
             question.setQuestion(updateQuestion.getQuestion());
             question.setUserId(updateQuestion.getUserId());
             question.setType(updateQuestion.getType());
+            question.setUrl(updateQuestion.getUrl());
+            question.setNombre(updateQuestion.getNombre());
             return question;
         };
     }
@@ -41,7 +45,9 @@ public class MapperUtils {
                 entity.getUserId(),
                 entity.getQuestion(),
                 entity.getType(),
-                entity.getCategory()
+                entity.getCategory(),
+                entity.getUrl(),
+                entity.getNombre()
         );
     }
 
@@ -49,7 +55,10 @@ public class MapperUtils {
         return entity -> new AnswerDTO(
                 entity.getId(),
                 entity.getUserId(),
-                entity.getAnswer()
+                entity.getAnswer(),
+                entity.getUrl(),
+                entity.getNombre()
+
         );
     }
 }

@@ -12,7 +12,24 @@ public class Question {
     private String question;
     private String type;
     private String category;
+    private String url;
+    private String nombre;
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     public String getId() {
         return id;

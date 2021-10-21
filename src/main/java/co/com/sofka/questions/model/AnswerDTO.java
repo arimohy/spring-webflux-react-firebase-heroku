@@ -15,15 +15,20 @@ public class AnswerDTO {
 
     private Integer position;
 
+    private String url;
+    private String nombre;
+
 
     public AnswerDTO() {
 
     }
 
-    public AnswerDTO(@NotBlank String questionId, @NotBlank String userId, @NotBlank String answer) {
+    public AnswerDTO(@NotBlank String questionId, @NotBlank String userId, @NotBlank String answer,String url,String nombre) {
         this.userId = userId;
         this.questionId = questionId;
         this.answer = answer;
+        this.url=url;
+        this.nombre=nombre;
     }
 
     public Integer getPosition() {
@@ -57,6 +62,22 @@ public class AnswerDTO {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @Override
