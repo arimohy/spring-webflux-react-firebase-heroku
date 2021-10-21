@@ -19,7 +19,9 @@ import AnswerFormPage from './pages/AnswerFormPage'
 import OwnerQuestionsPage from './pages/OwnerQuestionsPage'
 import { useAuthState } from "react-firebase-hooks/auth";
 import Footer from "./components/Footer"
-
+import LoginPage from "./pages/LoginPage"
+import Register from "./pages/Register"
+/*
 firebase.initializeApp({
   apiKey: "AIzaSyAHx-Jg4cNIHX-x2MDww_puia221XdCNHA",
   authDomain: "questionandanswer-5bd89.firebaseapp.com",
@@ -28,7 +30,7 @@ firebase.initializeApp({
   messagingSenderId: "336608539281",
   appId: "1:336608539281:web:9952095c8b710be3e8c530",
   measurementId: "G-W7XSCEP48R"
-});
+});*/
 
 const auth = firebase.auth();
 const App = ({ dispatch }) => {
@@ -56,7 +58,7 @@ const App = ({ dispatch }) => {
           </Switch>
         </> :
         <>
-          <PublicNavbar />
+          <PublicNavbar/>
           <Switch>
             <Route exact path="/" component={() => {
               return <HomePage><SignIn dispatch={dispatch} /></HomePage>
@@ -64,6 +66,8 @@ const App = ({ dispatch }) => {
             <Route exact path="/questions" component={QuestionsPage} />
             <Route exact path="/question/:id" component={SingleQuestionPage} />
             <Route exact path="/answer/:id" component={AnswerFormPage} />
+            <Route exact path="/login" component={LoginPage} dispatch={dispatch}/>
+            <Route exact path="/register" component={Register} dispatch={dispatch}/>
             <Redirect to="/" />
           </Switch>
         </>

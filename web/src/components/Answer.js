@@ -2,6 +2,7 @@ import React from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import imagensinusuario from "../userd.png"
 
 //const auth=firebase.auth().currentUser;
 //console.log(auth)
@@ -13,15 +14,15 @@ export const Answer = ({ answer }) => (
   <aside className="answer">
   <div className="card mb-3">
   <div className="row g-0">
-  <h6 className="card-header">{answer.nombre}</h6>
+  <h6 className="card-header">{answer.nombre!=null?answer.nombre:"usuario sin nombre"}</h6>
     <div className="col-md-2">
-    <img src={answer.url} alt="img-fluid rounded-start" alt="..." />
+    <img src={answer.url!=null?answer.url:imagensinusuario} alt="img-fluid rounded-start" alt="..." />
     </div>
     
     <div className="col-md-10">
       <div className="card-body">
         <h5 className="card-title">Answer:</h5>
-        <p className="card-text">{answer.answer}.</p>
+        <p className="card-text">{answer.answer }.</p>
         
       </div>
     </div>

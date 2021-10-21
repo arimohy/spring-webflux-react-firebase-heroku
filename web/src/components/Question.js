@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import imagensinusuario from "../userd.png"
 
 export const Question = ({ question, excerpt, onDelete }) => (
   <article className={excerpt ? 'question-excerpt' : 'question'}>
 
     <div className="card mb-3">
       <div className="row g-0">
-      <h6 className="card-header">{question.nombre}</h6>
+      <h6 className="card-header">{question.nombre!=null?question.nombre:"usuario sin nombre"}</h6>
         
         
         <div className="col-md-10">
@@ -17,7 +18,7 @@ export const Question = ({ question, excerpt, onDelete }) => (
           </div>
         </div>
         <div className="col-md-2">
-        <img src={question.url} alt="img-fluid rounded-end" alt="..." />
+        <img src={question.url!=null?question.url:imagensinusuario} alt="img-fluid rounded-end" alt="..." />
         </div>
       </div>
     </div>
