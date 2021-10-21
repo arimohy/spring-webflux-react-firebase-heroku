@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchQuestion } from '../actions/questionActions'
+import { fetchQuestion ,deleteAnwer} from '../actions/questionActions'
 
 import { Question } from '../components/Question'
 import { Answer } from '../components/Answer'
@@ -15,13 +15,17 @@ const SingleQuestionPage = ({
   loading,
   userId,
   url,
-  nombre
+  nombre,
+  redirect
 }) => {
   const { id } = match.params
   useEffect(() => {
     dispatch(fetchQuestion(id))
-  }, [dispatch, id])
+  }, [dispatch, id,redirect])
 
+  const onDelete = (id) => {
+    dispatch(deleteAnwer(id))
+}
   const renderQuestion = () => {
     if (loading.question) return <p>Loading question...</p>
     if (hasErrors.question) return <p>Unable to display question.</p>
@@ -31,7 +35,10 @@ const SingleQuestionPage = ({
 
   const renderAnswers = () => {
     return (question.answers && question.answers.length) ? question.answers.map(answer => (
-      <Answer key={answer.id} answer={answer} />
+      <Answer key={answer.id}
+       answer={answer} 
+       userId={userId} 
+       onDelete={onDelete} />
     )) : <p>Empty answer!</p>;
   }
 
@@ -41,9 +48,10 @@ const SingleQuestionPage = ({
       {userId && <Link to={"/answer/" + id} className="button right">
         Reply
       </Link>}
-
+      
       <h2>Answers</h2>
       {renderAnswers()}
+      
     </section>
   )
 }
@@ -54,7 +62,8 @@ const mapStateToProps = state => ({
   hasErrors: state.question.hasErrors,
   userId: state.auth.uid,
   url:state.auth.photoURL,
-  nombre: state.auth.displayName
+  nombre: state.auth.displayName,
+  redirect: state.question.redirect,
 })
 
 export default connect(mapStateToProps)(SingleQuestionPage)
