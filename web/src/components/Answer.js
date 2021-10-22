@@ -6,14 +6,16 @@ import Swal from 'sweetalert2'
 
 
 export const Answer = ({ answer ,userId, onDelete}) => (
-
+  //<aside className="answer">
+  // <p>{answer.answer}</p>
+  //</aside>
   <aside className="answer">
   <div className="card mb-3">
   <div className="row g-0">
   <h6 className="card-header">{answer.nombre!=null?answer.nombre:"usuario sin nombre"}</h6>
   
     <div className="col-md-2">
-    <img src={answer.url!=null?answer.url:imagensinusuario} className="img-fluid rounded-start" alt="imagen perfil" />
+    <img src={answer.url!=null?answer.url:imagensinusuario} alt="img" />
     </div>
     
     <div className="col-md-10">
@@ -22,10 +24,10 @@ export const Answer = ({ answer ,userId, onDelete}) => (
         <div dangerouslySetInnerHTML={{__html:answer.answer}} />
         
         {answer.userId === userId && 
-        <a  href="eliminar" className="btn btn-danger"onClick={() => {
+        <button className="btn btn-danger" onClick={() => {
           Swal.fire({
-            title: "¿Eliminar respuesta?",
-            text: "Esta seguro ya no se podra recuperar !",
+            title: "¿Estas Seguro que quieres eliminar esta pregunta?",
+            text: "Se eliminaran tambien sus respuestas!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -37,8 +39,7 @@ export const Answer = ({ answer ,userId, onDelete}) => (
               Swal.fire("Eliminado!", "Su pregunta fue eliminado.", "success");
             }
           });
-          
-        }} >Delete Answer</a>}
+        }} >Delete Answer</button>}
       </div>
       
     </div>

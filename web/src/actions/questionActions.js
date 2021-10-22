@@ -1,5 +1,4 @@
-//const URL_BASE = 'https://gentle-tor-01963.herokuapp.com';
-const URL_BASE = 'http://localhost:8080';
+const URL_BASE = 'https://gentle-tor-01963.herokuapp.com';
 export const LOADING = 'LOADING'
 export const LOADED_SUCCESS = 'LOADED_SUCCESS'
 export const LOADED_FAILURE = 'LOADED_FAILURE'
