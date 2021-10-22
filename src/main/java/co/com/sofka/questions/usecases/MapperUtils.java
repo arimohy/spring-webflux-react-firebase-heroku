@@ -35,6 +35,9 @@ public class MapperUtils {
             question.setType(updateQuestion.getType());
             question.setUrl(updateQuestion.getUrl());
             question.setNombre(updateQuestion.getNombre());
+            question.setNumberOfReviews(updateQuestion.getNumberOfReviews());
+            question.setSumOfReviewScores(updateQuestion.getSumOfReviewScores());
+            question.setUserReviews(updateQuestion.getUserReviews());
             return question;
         };
     }
@@ -47,7 +50,10 @@ public class MapperUtils {
                 entity.getType(),
                 entity.getCategory(),
                 entity.getUrl(),
-                entity.getNombre()
+                entity.getNombre(),
+                entity.getNumberOfReviews(),
+                entity.getSumOfReviewScores(),
+                entity.getUserReviews()
         );
     }
 
