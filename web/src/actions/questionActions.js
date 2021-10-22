@@ -137,3 +137,23 @@ export function deleteAnwer(id) {
     }
 }
 
+export function postReview(score, id, user) {
+    return async (dispatch) => {
+        dispatch(loading());
+        try {
+            const response = await fetch(`${URL_BASE}/review/add`, {
+            method: "PUT",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userId: user, score: score, questionId: id }),
+            });
+            const data = await response.json();
+            dispatch(success({ redirect: `/question/${id}`, question: data }));
+        } catch (error) {
+            dispatch(failure());
+        }
+    };
+}
+

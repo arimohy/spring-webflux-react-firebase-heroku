@@ -1,4 +1,4 @@
-package co.com.sofka.questions.collections;
+package co.com.sofka.questions.model;
 
 public class Review {
     private String userId;

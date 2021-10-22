@@ -1,6 +1,6 @@
 package co.com.sofka.questions.usecases;
 
-import co.com.sofka.questions.collections.Review;
+import co.com.sofka.questions.model.Review;
 import co.com.sofka.questions.model.QuestionDTO;
 import co.com.sofka.questions.reposioties.QuestionRepository;
 import org.springframework.stereotype.Service;
