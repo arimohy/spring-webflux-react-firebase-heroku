@@ -13,7 +13,7 @@ export const Question = ({ question, excerpt, onDelete }) => (
 
         <div className="col-md-10">
           <div className="card-body">
-            <h3 className="card-title">{question.question}</h3>
+          <div dangerouslySetInnerHTML={{__html:question.question}} />
             <h5 className="card-text">
               {question.category} - <small>{question.type}</small>
             </h5>

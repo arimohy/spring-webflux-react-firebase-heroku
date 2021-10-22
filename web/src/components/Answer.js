@@ -23,7 +23,8 @@ export const Answer = ({ answer ,userId, onDelete}) => (
     <div className="col-md-10">
       <div className="card-body">
         <h5 className="card-title">Answer:</h5>
-        <p className="card-text">{answer.answer }.</p>
+        <div dangerouslySetInnerHTML={{__html:answer.answer}} />
+        
         {answer.userId === userId && 
         <a className="btn btn-danger"onClick={() => {
           Swal.fire({

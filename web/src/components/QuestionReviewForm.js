@@ -20,11 +20,11 @@ function QuestionReviewForm({ question, user, dispatch, loading, hasErrors }) {
     if (hasErrors) return <p>Unable to display questions.</p>;
 
     return (
-        <div class="card text-center">
-            <div class="card-header">
+        <div className="card text-center">
+            <div className="card-header">
             Review Questions
             </div>
-            <div class="card-body">
+            <div className="card-body">
             {renderQuestions() || user === null ? (
             <div>
             Average question rating: <Rating question={question} />
@@ -46,35 +46,10 @@ function QuestionReviewForm({ question, user, dispatch, loading, hasErrors }) {
             </form>
         )}
             </div>
-            <div class="card-footer text-muted">
+            <div className="card-footer text-muted">
                 
             </div>
         </div>
-
-        /*
-        <section>
-        <h5>Review Questions</h5>
-        {renderQuestions() || user === null ? (
-            <div>
-            Average question rating: <Rating question={question} />
-            </div>
-        ) : (
-            <form onSubmit={handleSubmit(onSubmit)}>
-            <label for="review">Question rating</label>
-            <select 
-            className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-            {...register("review")} id="">
-                <option value=""> Select...</option>
-                <option value="1">☹️</option>
-                <option value="2">😐</option>
-                <option value="3">😄</option>
-            </select>
-            <button type="submit" className=" button right">
-                Send review
-            </button>
-            </form>
-        )}
-        </section>*/
     );
 }
 

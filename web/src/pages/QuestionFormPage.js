@@ -1,20 +1,44 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState} from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { postQuestion } from '../actions/questionActions'
 import { connect } from 'react-redux'
+import { Text } from "../components/Text";
 
 const FormPage = ({ dispatch, loading, redirect, userId,url,nombre }) => {
+    const [formState, setformState] = useState({
+        type:'OPEN (LONG OPEN BOX)',
+        category:'TECHNOLOGY AND COMPUTER'
+    })
+    const validateInput = ({question}) => {
+        if(question.length && question.length <=500) {
+            return true;
+        }
+        return false;
+    }
+
+
+    const [content, setContent] = useState('');
+
     const { register, handleSubmit } = useForm();
     const history = useHistory();
 
-    const onSubmit = data => {
-        data.userId = userId;
-        data.url=url;
-        data.nombre=nombre;
-        
-        dispatch(postQuestion(data));
-    };
+    
+    const onSubmit = e => {
+        e.preventDefault();
+        const data = {...formState,
+            userId,
+            url,
+            nombre,
+            question:content
+        }
+        validateInput(data) && dispatch(postQuestion(data));
+    }
+    const handleInputChange = ({target}) => {
+        setformState({...formState,
+            [target.name]:target.value
+        });
+    }
 
     useEffect(() => {
         if (redirect) {
@@ -26,11 +50,11 @@ const FormPage = ({ dispatch, loading, redirect, userId,url,nombre }) => {
         <section>
             <h1>New Question</h1>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={onSubmit}>
 
                 <div>
                     <label for="type">Type</label>
-                    <select {...register("type")} id="">
+                    <select name="type" onChange={handleInputChange} id="type">
                         <option value="OPEN (LONG OPEN BOX)">OPEN (LONG OPEN BOX)</option>
                         <option value="OPINION (SHORT OPEN BOX)">OPINION (SHORT OPEN BOX)</option>
                         <option value="WITH RESULT (OPEN BOX WITH LINK)">WITH RESULT (OPEN BOX WITH LINK)</option>
@@ -39,7 +63,7 @@ const FormPage = ({ dispatch, loading, redirect, userId,url,nombre }) => {
                 </div>
                 <div>
                     <label for="category">Category</label>
-                    <select {...register("category")} id="category">
+                    <select name="category"onChange={handleInputChange} id="category">
                         <option value="TECHNOLOGY AND COMPUTER">TECHNOLOGY AND COMPUTER</option>
                         <option value="SCIENCES">SCIENCES</option>
                         <option value="SOFTWARE DEVELOPMENT">SOFTWARE DEVELOPMENT</option>
@@ -51,8 +75,9 @@ const FormPage = ({ dispatch, loading, redirect, userId,url,nombre }) => {
 
                 <div>
                     <label for="question">Question</label>
-                    <textarea id="question" {...register("question", { required: true, maxLength: 300 })} />
-                </div>
+                    <Text id="question" setContent={setContent}/>
+                    </div>
+
                 <button type="submit" className="button" disabled={loading} >{
                     loading ? "Saving ...." : "Save"
                 }</button>

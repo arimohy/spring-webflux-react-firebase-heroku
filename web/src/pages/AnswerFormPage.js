@@ -1,22 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState} from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import {  fetchQuestion, postAnswer } from '../actions/questionActions'
 import { connect } from 'react-redux'
 import { Question } from '../components/Question'
+import { Text } from "../components/Text";
 
 const FormPage = ({ dispatch, loading, redirect, match,hasErrors, question, userId ,url,nombre}) => {
+    const [content, setContent] = useState('');
     const { register, handleSubmit } = useForm();
     const { id } = match.params
     const history = useHistory();
 
-    const onSubmit = data => {
-        data.userId =  userId;
-        data.questionId = id;
-        data.url=url;
-        data.nombre=nombre;
-        dispatch(postAnswer(data));
+    const validateInput = ({answer}) => {
+        if(answer.length && answer.length <=1000) {
+            return true;
+        }
+        return false;
+    }
+    const onSubmit = e => {
+        e.preventDefault();
+        const data={
+        userId,
+        questionId:id,
+        url,
+        nombre,
+        answer:content
+        }
+        validateInput(data) && dispatch(postAnswer(data));
     };
+    
 
     useEffect(() => {
         dispatch(fetchQuestion(id))
@@ -41,10 +54,11 @@ const FormPage = ({ dispatch, loading, redirect, match,hasErrors, question, user
             {renderQuestion()}
             <h1>New Answer</h1>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={onSubmit}>
                 <div>
-                    <label for="answer">Answer</label>
-                    <textarea id="answer" {...register("answer", { required: true, maxLength: 300 })} />
+                    <Text id="answer" setContent={setContent}/>
+                                        
+                    
                 </div>
                 <button type="submit" className="button" disabled={loading} >{
                     loading ? "Saving ...." : "Save"
