@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import imagensinusuario from "../userd.png";
 import Swal from 'sweetalert2'
 
-export const Question = ({ question, excerpt, onDelete }) => (
-  <article className={excerpt ? "question-excerpt" : "question"}>
+export const Question = ({ question, excerpt, onDelete ,setCategorySearch}) => {
+  
+  const handleCategorySearch = (e)=>{
+    setCategorySearch(question.category)
+  }
+
+
+  return (<article className={excerpt ? "question-excerpt" : "question"}>
     <div className="card mb-3">
       <div className="row g-0">
         <h6 className="card-header">
@@ -15,9 +21,14 @@ export const Question = ({ question, excerpt, onDelete }) => (
           <div className="card-body">
           <div dangerouslySetInnerHTML={{__html:question.question}} />
             <h5 className="card-text">
-              {question.category} - <small>{question.type}</small>
+            {setCategorySearch?
+            <p className="categorySearch" onClick={handleCategorySearch}>{question.category}  - <small>{question.type}</small></p>:
+            <p>{question.category}  - <small>{question.type}</small></p>
+            }
             </h5>
           </div>
+
+          
         </div>
         <div className="col-md-2">
           <img
@@ -59,5 +70,5 @@ export const Question = ({ question, excerpt, onDelete }) => (
         View Question
       </Link>
     )}
-  </article>
-);
+  </article>)
+}
