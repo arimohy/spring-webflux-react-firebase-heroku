@@ -8,7 +8,7 @@ export const PublicNavbar = () => (
   <nav>
     <section>
       <Link to="/">
-      <img  className="logo" src={Logo} />
+      <img  className="logo" src={Logo} alt="imagenlogo"/>
       </Link>
       <Link to="/">Home</Link>
       <Link to="/questions">Questions</Link>
@@ -27,7 +27,7 @@ export const PrivateNavbar = () => (
   <nav>
     <section>
       <Link to="/">
-      <img className="logo"  src={Logo} />
+      <img className="logo"  src={Logo} alt="imagenlogo" />
       </Link>
       <Link to="/">Home</Link>
       <Link to="/questions">Questions</Link>

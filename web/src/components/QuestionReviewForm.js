@@ -13,7 +13,6 @@ function QuestionReviewForm({ question, user, dispatch, loading, hasErrors }) {
     };
 
     const renderQuestions = () => {
-        console.log(question.userReviews);
         return question.userReviews.includes(user);
     };
     if (loading) return <p>Loading ...</p>;
@@ -36,9 +35,9 @@ function QuestionReviewForm({ question, user, dispatch, loading, hasErrors }) {
             className="form-select form-select-lg mb-5" aria-label=".form-select-lg example"
             {...register("review")} id="">
                 <option value=""> choose an emoji... </option>
-                <option value="1">☹️</option>
-                <option value="2">😐</option>
-                <option value="3">😄</option>
+                <option value="1">{`☹️`}</option>
+                <option value="2">{`😐`}</option>
+                <option value="3">{`😄`}</option>
             </select>
             <button type="submit" className=" btn btn-primary">
                 Send review

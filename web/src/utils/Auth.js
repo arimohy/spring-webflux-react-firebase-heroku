@@ -14,7 +14,6 @@ export const logout = () => ({
 
 
 export function signup(email, password) {
-    //return auth().createUserWithEmailAndPassword(email, password);
     return firebase.auth().createUserWithEmailAndPassword(email, password);
 }
 

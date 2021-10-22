@@ -7,18 +7,17 @@ function Rating({ question }) {
 
     switch (average) {
         case 1:
-        return <h1>☹️</h1>;
-        break;
-
+        return <h1>{`☹️`}</h1>;
+        
         case 2:
-        return <h1>😐</h1>;
-        break;
+        return <h1>{`😐`}</h1>;
+        
 
         case 3:
-        return <h1>😄</h1>;
-        break;
+        return <h1>{`😄`}</h1>;
+
         default:
-        return <h1></h1>;
+        return <h1> </h1>;
     }
 }
 

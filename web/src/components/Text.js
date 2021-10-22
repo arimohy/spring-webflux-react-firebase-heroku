@@ -5,7 +5,7 @@ export const Text = ({setContent}) => {
 	const editor = useRef(null)
 
 	const config = {
-		readonly: false // all options from https://xdsoft.net/jodit/doc/
+		readonly: false 
 	}
 
 	return (

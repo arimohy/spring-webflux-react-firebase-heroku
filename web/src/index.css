@@ -123,3 +123,8 @@ body {
   .contentHome{
     padding: 4rem;
   }
+  .categorySearch:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #ea3546;
+  }

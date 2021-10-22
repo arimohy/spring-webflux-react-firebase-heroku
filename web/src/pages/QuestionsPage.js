@@ -11,19 +11,14 @@ const QuestionsPage = ({ dispatch, loading, questions, hasErrors }) => {
         dispatch(fetchQuestions())
     }, [dispatch])
 
-
-
     const [search, setSearch] = useState('');
     const [categorySearch, setCategorySearch] = useState('');  
 
     var questionFilteredCategory = questions.filter(question => question.category.toUpperCase().includes(categorySearch.toUpperCase()))
-
     var questionsFilteredSearch = questionFilteredCategory.filter(question => question.question.toUpperCase().includes(search.toUpperCase()))
 
 
     const goTOVariable = questionsFilteredSearch[0]?.id
-    const questionDirected = questionsFilteredSearch[0]?.question
-
 
     const handleSearch = (e)=>{
         setSearch(e.target.value);
@@ -39,7 +34,9 @@ const QuestionsPage = ({ dispatch, loading, questions, hasErrors }) => {
 
     return (
         <section>
-            <h1>Questions</h1>
+            <h1>Questions : </h1>
+            <h5>Filtro: <font color="red">{search}</font> </h5>
+            <h5>Category: <font color="red">{categorySearch}</font></h5>
 
             <form>
                 <input type="text" onChange={handleSearch}/>

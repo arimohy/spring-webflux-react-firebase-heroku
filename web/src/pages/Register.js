@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { signup, signInWithGoogle, signInWithGitHub } from "../utils/Auth";
+import { signup, signInWithGoogle} from "../utils/Auth";
 
 export default class SignUp extends Component {
 

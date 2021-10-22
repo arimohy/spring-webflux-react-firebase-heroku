@@ -34,7 +34,6 @@ export const Question = ({ question, excerpt, onDelete ,setCategorySearch}) => {
           <img
             src={question.url != null ? question.url : imagensinusuario}
             alt="img-fluid rounded-end"
-            alt="..."
           />
         </div>
       </div>
@@ -58,12 +57,10 @@ export const Question = ({ question, excerpt, onDelete ,setCategorySearch}) => {
               Swal.fire("Eliminado!", "Su pregunta fue eliminado.", "success");
             }
           });
-          //onDelete(question.id)
         }}
       >
         DELETE
       </button>
-      //<button className="button right">DELETE</button>
     )}
     {excerpt && (
       <Link to={`/question/${question.id}`} className="button">
